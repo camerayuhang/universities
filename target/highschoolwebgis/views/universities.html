@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HighSchools</title>
+    <link rel="stylesheet" href="../js/lib/ol6.9.0/ol.css" type="text/css">
+    <link rel="stylesheet" href="../css/base.css" type="text/css">
+    <link rel="stylesheet" href="../css/main.css" type="text/css">
+    <link rel="stylesheet" href="../css/mymap.css" type="text/css">
+
+</head>
+<body>
+<!--登录模态框开始-->
+<div class="login-modal" id="model">
+    <div class="login-container">
+        <div class="closer" id="login-closer">
+        </div>
+        <div class="login-title">会员登录</div>
+        <form class="login-content" id="ol-login-form">
+            <ul>
+                <li>
+                    <label for="username">账户：</label>
+                    <input type="text" placeholder="请输入账号" id="username" name="username">
+                </li>
+                <li>
+                    <label for="userpass">密码：</label>
+                    <input type="password" placeholder="请输入密码" id="userpass" name="userpass">
+                </li>
+                <li>
+                    <p class="tip">提示信息</p>
+                </li>
+                <li>
+                    <div class="btngroup">
+                    <button type="submit" id="user-login">登录</button>
+                    <button type="submit" id="user-signup">注册</button>
+                    </div>
+                </li>
+            </ul>
+
+        </form>
+    </div>
+
+</div>
+<div class="layout layout-nav">
+    <div class="nav-title">
+        全国高校信息查询系统WebGIS
+    </div>
+    <div class="nav-action">
+        <ul class="clearfix">
+            <li>
+                <span class="">登录成功</span></li>
+            <li>
+                <span id="usernamestr">用户名</span>
+            </li>
+            <li><a href="#" id="login">登录/注册</a></li>
+            <li><a id="logout">退出登录</a></li>
+
+        </ul>
+    </div>
+</div>
+<div class="layout layout-main">
+    <div class="main-map" id="map">
+        <div class="query-box" id="query-control" tabindex="0">
+            <form action="../GetUniversities" id="form-query">
+                <ul class="clearfix">
+                    <!--            搜索框-->
+                    <li class="clearfix">
+                        <div class="search-bar">
+                            <div class="search">
+                                <input class="name" type="text" placeholder="请输入院校名称" name="name">
+                                <span class="result">0</span>
+                            </div>
+                            <button id="submitBtn" type="submit">查询</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="tip">注：本名单未包含港澳台地区高等学校</div>
+                    </li>
+                    <li>
+                        <div class="clearfix">
+                            <div class="list-hd">院校所在地</div>
+                            <select class="list-hide" name="city" id="cities-select">
+                                <option value="全部" selected="selected">全部</option>
+                            </select>
+                            <div id="cities" class="list-bd">
+                                <span class="current qb-option" data-id="全部">全部</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="clearfix">
+                            <div class="list-hd">主管部门类别</div>
+                            <select class="list-hide" name="department" id="departments-select">
+                                <option value="全部" selected="selected">全部</option>
+                            </select>
+                            <div id="departments" class="list-bd">
+                                <span class="current qb-option" data-id="全部">全部</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="clearfix">
+                            <div class="list-hd">院校类型</div>
+                            <select class="list-hide" name="type" id="types-select">
+                                <option value="全部" selected="selected">全部</option>
+                            </select>
+                            <div id="types" class="list-bd">
+                                <span class="current qb-option" data-id="全部">全部</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="clearfix">
+                            <div class="list-hd">学历层次</div>
+                            <select class="list-hide" name="level" id="levels-select">
+                                <option value="全部" selected="selected">全部</option>
+                            </select>
+                            <div id="levels" class="list-bd">
+                                <span class="current qb-option" data-id="全部">全部</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="clearfix">
+                            <div class="list-hd">院校特性</div>
+                            <div id="characteristics" class="list-bd">
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+        <div class="ol-popup" id="popup-overlay">
+            <form action="../UpdateInfo">
+                <a href="#" id="popup-closer" class="closer"></a>
+                <div id="popup-title" class="ol-popup-title">属性信息</div>
+                <div id="popup-content" class="ol-popup-content">
+                    <ul>
+                        <li class="clearfix">
+                            <label class="info-title">学校：</label>
+                            <input class="info-body" type="text" name="name" data-id="name">
+                        </li>
+                        <li class="clearfix">
+                            <label class="info-title">所在城市：</label>
+                            <input class="info-body" type="text" name="city" data-id="city">
+                        </li>
+                        <li class="clearfix">
+                            <label class="info-title">主管部门：</label>
+                            <input class="info-body" type="text" name="department" data-id="department">
+                        </li>
+                        <li class="clearfix">
+                            <label class="info-title">院校类型：</label>
+                            <input class="info-body" type="text" name="type" data-id="type">
+                        </li>
+                        <li class="clearfix">
+                            <label class="info-title">学历层次：</label>
+                            <input class="info-body" type="text" name="level" data-id="level">
+                        </li>
+                        <li class="clearfix">
+                            <label class="info-title">一流大学建设高校：</label>
+                            <select class="info-body" name="topschool" data-id="topschool">
+                                <option value="true">是</option>
+                                <option value="false">否</option>
+                            </select>
+                        </li>
+                        <li class="clearfix">
+                            <label class="info-title">一流学科建设高校：</label>
+                            <select class="info-body" name="topcourse" data-id="topcourse">
+                                <option value="true">是</option>
+                                <option value="false">否</option>
+                            </select>
+                        </li>
+                        <li class="clearfix">
+                            <label class="info-title">研究生院：</label>
+                            <select class="info-body" name="postgraduate" data-id="postgraduate">
+                                <option value="true">是</option>
+                                <option value="false">否</option>
+                            </select>
+                        </li>
+                        <li class="clearfix">
+                            <label class="info-title">满意度：</label>
+                            <input class="info-body" type="text" name="satisfaction" data-id="satisfaction">
+                        </li>
+                        <li class="clearfix">
+                            <label class="info-title">经纬度：</label>
+                            <div class="info-body">
+                                <div class="loninfo">
+                                    <input type="text" name="lon" id="lon" data-id="lon"><label for="lon">N</label>
+                                </div>
+                                <div class="latinfo">
+                                    <input type="text" name="lat" id="lat" data-id="lat"><label for="lat">E</label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+                <div id="popup-foot" class="ol-popup-foot">
+                    <div class="button-group">
+                        <button id="edit" type="button">编辑</button>
+                        <button id="save" type="submit">保存</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="map-tools">
+            <div class="base-tool tool" id="base-tool-control">
+                <ul class="clearfix">
+                    <li id="zoom-full">全国</li>
+                    <li id="zoom-in">放大</li>
+                    <li id="zoom-out">缩小</li>
+                    <li id="print">打印</li>
+                </ul>
+            </div>
+            <div class="ol-switch-layer tool" id="switch-layer-control">
+                <ul>
+                    <li>
+                        <label for="map-tile">底图：</label>
+                        <select id="map-tile">
+                            <option value="ArcGIS">ArcGIS</option>
+                            <option value="vec_w">天地图</option>
+                            <option value="autonavi">高德地图</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="mapping">制图：</label>
+                        <select id="mapping">
+                            <option value="none">无</option>
+                            <option value="heatmap">热力图</option>
+                        </select>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div id="layertree-control">
+            <h3>Layer Tree</h3>
+            <ul>
+                <li>
+                    <span>BaseMap layer</span>
+                    <fieldset id="layer0">
+                        <label class="checkbox" for="visible0">
+                            visible <input id="visible0" class="visible" type="checkbox">
+                        </label>
+                        <label>
+                            opacity <input class="opacity scroll" type="range" min="0" max="1" step="0.01">
+                        </label>
+                    </fieldset>
+                </li>
+                <li>
+                    <span>Layer group</span>
+                    <fieldset id="layer1">
+                        <label class="checkbox" for="visible1">
+                            visible <input id="visible1" class="visible" type="checkbox"/>
+                        </label>
+                        <label>
+                            opacity <input class="opacity scroll" type="range" min="0" max="1" step="0.01"/>
+                        </label>
+                    </fieldset>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script src="../js/lib/ol6.9.0/ol.js"></script>
+<script src="../js/lib/jQuery/jquery.min.js"></script>
+<script src="../js/initQueryBox.js"></script>
+<script src="../js/queryControl.js"></script>
+<script src="../js/baseToolControl.js"></script>
+<script src="../js/switchLayerControl.js"></script>
+<script src="../js/layerTreeControl.js"></script>
+<script src="../js/popupOverlay.js"></script>
+<script src="../js/login.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.layout {
+    width: 100%;
+    overflow: hidden;
+}
+/*登录界面*/
+.login-modal {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 99;
+    display: none;
+}
+.login-modal .login-container{
+    width: 400px;
+    height: 260px;
+    position: absolute;
+    left: calc(50% - 200px);
+    top: calc(50% - 130px);
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #5e6cf5;
+    text-align: center;
+    padding-top: 20px;
+}
+.login-modal .login-container .login-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+.login-modal .login-container .login-content{
+    font-size: 16px;
+}
+.login-container .login-content li:not(:nth-child(3)) {
+    margin-top: 20px;
+}
+.login-container .login-content li:last-child {
+    margin-top: 4px;
+}
+.login-container .closer {
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+.login-content li label {
+    font-weight: 700;
+}
+.login-content li .tip {
+    text-align: left;
+    font-size: 13px;
+    margin: 5px 0 5px 130px;
+}
+.login-content li input {
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    text-indent: 1em;
+    border: 1px solid #ccc
+}
+.login-content li .btngroup {
+    text-align: left;
+
+}
+.login-content li button{
+    width: 80px;
+    height: 40px;
+    color: #fff;
+    background-color: #0d3567;
+    font-weight: 600;
+    transition: all 0.5s;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.login-content li button:hover {
+    background-color: #30e391;
+}
+.login-content li button:not(:last-child) {
+    margin:0 35px 0 120px;
+}
+/*导航栏*/
+.layout-nav {
+    height: 50px;
+    line-height: 50px;
+    background-color: #335885;
+    color: white;
+    font-size: 20px;
+    padding-left: 10px;
+    position: relative;
+}
+.layout-nav .nav-action {
+    position: absolute;
+    height:100%;
+    right: 40px;
+    top: 0;
+}
+.layout-nav .nav-action li {
+    float: left;
+}
+.layout-nav .nav-action li:not(:first-child) {
+    margin-left: 20px;
+}
+.layout-nav .nav-action li span {
+    font-size: 16px;
+    color: #30e391;
+    cursor: default;
+}
+.layout-nav .nav-action li a {
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+.layout-nav .nav-action li a:hover {
+    color: #3385FF;
+}
+
+/*主体栏*/
+.layout-main {
+    height: calc(100% - 50px);
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.main-map {
+    height: 100%;
+    position: relative;
+}
+/*查询框*/
+.query-box {
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 430px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px 10px;
+    z-index: 9;
+}
+.query-box li {
+    padding: 5px 0;
+}
+.query-box li:not(:first-child) {
+    display: none;
+}
+/*搜索框*/
+.query-box .search-bar {
+    margin-left: 5px;
+}
+.query-box .search-bar .search {
+    width: 300px;
+    height: 40px;
+    border: 1px solid #d6d6d6;
+    color: #000;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 40px;
+    border-radius: 5px;
+    float: left;
+    outline-style: none;
+    overflow: hidden;
+}
+.query-box .search-bar .name{
+    width: 250px;
+    height: 100%;
+    color: #000;
+    float: left;
+    outline-style: none;
+    padding-left: 5px;
+}
+.query-box .search-bar .result {
+    width: calc(100% - 250px);
+    height: 100%;
+    line-height: 36px;
+    float: left;
+    background-color: #1cb278;
+    border: 1px solid #fff;
+    border-radius: 0 5px 5px 0;
+    text-align: center;
+    color: white;
+}
+.query-box .search-bar button{
+    height: 40px;
+    width: 80px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #1cb278;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+}
+.query-box .search-bar button:hover {
+    background: #1c9a6a;
+}
+.query-box .tip {
+    font-size: 12px;
+    color: #999;
+    margin-left: 10px;
+}
+/*所在地 部门 类型 学历等级 */
+.query-box .list-hd {
+    float: left;
+    font-weight: 700;
+    font-size: 14px;
+    width: 100px;
+    text-align: left;
+    margin-left: 10px;
+}
+.query-box .list-hide {
+    display: none;
+}
+.query-box .list-bd {
+    float: left;
+    font-size: 14px;
+    width: 280px;
+}
+.query-box .list-bd span{
+    float: left;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.query-box .list-bd .current{
+    color: #1db278;
+    cursor: default;
+
+}
+/*院校特性*/
+#characteristics label{
+    width: 190px;
+    float: left;
+    /*有id权重更高，所有手指不会变回去*/
+    cursor: pointer;
+}
+#characteristics label input{
+    vertical-align: -2px;
+    width: 13px;
+    height: 13px;
+    margin: 3px;
+}
+/*工具栏*/
+.main-map .map-tools {
+    position: absolute;
+    z-index: 9;
+    left: 10px;
+    top: 10px;
+
+}
+.main-map .map-tools .tool {
+    float: left;
+    border-radius: 6px;
+    font-size: 14px;
+    overflow: hidden;
+    background-color: #fff;
+    height: 40px;
+    line-height: 38px;
+    margin-right: 20px;
+    border: 1px solid #ccc;
+}
+/*基础工具*/
+.map-tools .base-tool li {
+    float: left;
+    cursor: pointer;
+    position: relative;
+    padding: 0 10px;
+}
+.map-tools .base-tool li:hover {
+    background-color: #3385FF;
+    color: white;
+}
+.map-tools .base-tool li:not(:first-child):before {
+    content: " ";
+    position: absolute;
+    width: 1px;
+    height: 20px;
+    left: 0;
+    /*减掉自身一半就能居中*/
+    top: calc(50% - 10px);
+    background-color: #ccc;
+}
+/*切换底图*/
+.map-tools .ol-switch-layer {
+    z-index: 9;
+    border-radius: 6px;
+}
+.map-tools .ol-switch-layer li {
+    position: relative;
+    float: left;
+}
+
+.map-tools .ol-switch-layer li:not(:first-child):before {
+    content: " ";
+    position: absolute;
+    width: 1px;
+    height: 30px;
+    left: 0;
+    /*减掉自身一半就能居中*/
+    top: calc(50% - 15px);
+    background-color: #ccc;;
+}
+.map-tools .ol-switch-layer label {
+    padding-left: 10px;
+}
+.map-tools .ol-switch-layer select {
+    font-size: 14px;
+    border: 0;
+    height: 100%;
+    outline-style: none;
+    outline: 0;
+    cursor: pointer;
+}
+.map-tools .ol-switch-layer select:hover {
+    color: #3385FF;
+}
+/*table of content*/
+.main-map #layertree-control {
+    position: absolute;
+    z-index: 9;
+    left: 10px;
+    top: 90px;
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    min-width: 285px;
+}
+.main-map #layertree-control h3 {
+    line-height: 26px;
+}
+#layertree-control ul {
+    padding-left: 20px;
+}
+#layertree-control>ul {
+    margin-top: 10px;
+}
+#layertree-control ul>li {
+    list-style-type: disc;
+}
+#layertree-control ul>li ul>li {
+    list-style-type: circle;
+}
+#layertree-control li>span {
+    font-weight: 700;
+    cursor: pointer;
+}
+#layertree-control li>span:hover {
+    color: #3385FF;
+}
+#layertree-control li label {
+    display: block;
+    line-height: 23px;
+}
+#layertree-control li input {
+    vertical-align: -2px;
+}
+#layertree-control li .scroll {
+    vertical-align: -4px;
+}

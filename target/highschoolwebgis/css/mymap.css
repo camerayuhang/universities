@@ -1,0 +1,121 @@
+.ol-mouse-position{
+    right: 10px;
+    bottom: 10px;
+    top: auto;
+    padding: 2px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    opacity: 1;
+}
+.ol-popup {
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    bottom: 12px;
+    left: -50px;
+    font-size: 13px;
+    width: max-content;
+}
+.ol-popup:after, .ol-popup:before {
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+.ol-popup-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 25px;
+    border-bottom: 1px solid #cccccc;
+    padding: 0 10px 5px 10px;
+}
+.ol-popup:after {
+    border-top-color: white;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+}
+.ol-popup:before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+}
+.closer {
+    text-decoration: none;
+    position: absolute;
+    top: 2px;
+    right: 8px;
+    color: #03899c;
+    font-size: 16px;
+}
+.closer:hover {
+    color: #c6270e;
+}
+.closer:after {
+    content: "x";
+    font-weight: 700;
+}
+.ol-popup-content {
+    line-height: 20px;
+    margin-bottom: 5px;
+    padding: 0 10px;
+}
+.ol-popup-content li:not(:first-child){
+    margin-top: 2px;
+}
+
+.ol-popup-content li label{
+    font-weight: 700;
+}
+
+.ol-popup-content li input{
+    font-size: 13px;
+    outline-style: none;
+}
+
+.ol-popup-content li select:disabled {
+    opacity: 1;
+    color: black;
+    background-color: white;
+    border: none;
+    appearance: none;
+}
+.ol-popup-content .info-title {
+    float: left;
+}
+.ol-popup-content .info-body {
+    float: left;
+    line-height: 21px;
+    font-size: 13px;
+}
+
+.ol-popup-content .loninfo .latinfo {
+    display: block;
+}
+.ol-popup-foot .button-group {
+    float: right;
+}
+.ol-popup-foot .button-group button {
+    float: left;
+    width: 40px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: white;
+    background-color: #03899c;
+    cursor: pointer;
+}
+.ol-popup-foot .button-group #save {
+    margin-left: 10px;
+}
+.ol-popup-foot .button-group button:hover{
+    background-color: #025B6A;
+}

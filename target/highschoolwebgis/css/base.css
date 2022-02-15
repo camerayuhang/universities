@@ -1,0 +1,39 @@
+div,
+input,
+span,
+li,
+ul,
+a,
+button{
+    box-sizing: border-box;
+}
+li {
+    list-style: none;
+}
+ul,h1,h2,h3,h4,h5,h6,p {
+    padding: 0;
+    margin: 0;
+}
+input, button {
+    padding: 0;
+    border: 0;
+}
+fieldset {
+    border: 0;
+}
+a {
+    text-decoration: none;
+}
+img {
+    vertical-align: top;/*图片不要和基线对其*/
+}
+.clearfix:before,.clearfix:after {
+    content:"";
+    display:table;  /* 这句话可以出发BFC BFC可以清除浮动 */
+}
+.clearfix:after {
+    clear:both;
+}
+.clearfix {
+    *zoom:1;
+}
